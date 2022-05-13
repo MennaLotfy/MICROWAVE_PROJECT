@@ -59,3 +59,14 @@ if ((x== '1')||(x== '2')||(x== '3')||(x== '4')||(x== '5')	||(x== '6')||(x== '7')
 		}
 
 	};
+	
+	
+	void chicken (void) // C for chicken cooking
+{
+
+	lcd_write_string("Chicken weight:");
+	Systick_n10ms(20);
+  x=Keypad_Getkey();	
+  kilos_check_chicken();
+}
+	

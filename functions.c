@@ -1,0 +1,9 @@
+#include "tm4c123gh6pm.h"
+#include <stdint.h>
+#include "string.h"
+#include "STD_TYPES.h"
+#include "KPD.h"
+#include "LCD.h"
+#include "stdlib.h"
+#include "GPIO_INIT.h"
+#include "timer_min_sec.h"

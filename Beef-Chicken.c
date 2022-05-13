@@ -1,0 +1,9 @@
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include "STD_TYPES.h"
+#include "LCD.h"
+#include "KPD.h"
+#include "GPIO_INIT.h"
+#include "functions.h"

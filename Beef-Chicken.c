@@ -114,4 +114,11 @@ if ((x== '1')||(x== '2')||(x== '3')||(x== '4')||(x== '5')	||(x== '6')||(x== '7')
 
 	};
 
-	
+	void Beef (void) // B fo beef cooking
+{
+	lcd_write_string("Beef weight:");
+	Systick_n10ms(20);
+  x=Keypad_Getkey();
+  kilos_check_Beef();
+
+}

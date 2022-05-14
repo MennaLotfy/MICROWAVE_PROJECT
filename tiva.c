@@ -8,3 +8,9 @@
 #include "Pop_Corn.h"
 #include "Beef-Chicken.h"
 #include "take_cooking_time.h"
+
+int s;
+int m ;
+int SW1 ;
+int SW2 ;
+int SW3 ;

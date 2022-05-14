@@ -82,4 +82,14 @@ char* itoa(int value, char* buffer, int base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
+
+
+
+
+
+// return switch three
+int SW3_input(void){
+	
+	return(GPIO_PORTD_DATA_R&0x2);	
+}
  

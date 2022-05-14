@@ -95,8 +95,8 @@ int main()
 	else if (SW3 !=0)  // open door alert
 	{
 		lcd_cmd(first_line1); 
-	  lcd_write_string("Please close");
+	  lcd_write_string("  Please close  ");
 	  lcd_cmd(first_line2);
-		lcd_write_string("    the door ");
+		lcd_write_string("    the door    ");
 	}
 }

@@ -425,6 +425,11 @@
               <FileType>1</FileType>
               <FilePath>.\functions.c</FilePath>
             </File>
+            <File>
+              <FileName>tiva.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\tiva.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

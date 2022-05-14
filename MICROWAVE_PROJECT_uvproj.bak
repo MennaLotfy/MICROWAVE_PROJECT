@@ -415,6 +415,16 @@
               <FileType>1</FileType>
               <FilePath>.\Beef-Chicken.c</FilePath>
             </File>
+            <File>
+              <FileName>Beef-Chicken.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Beef-Chicken.h</FilePath>
+            </File>
+            <File>
+              <FileName>functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\functions.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

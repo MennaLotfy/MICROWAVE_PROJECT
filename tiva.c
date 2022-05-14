@@ -42,7 +42,53 @@ int main()
 		
 	else if ((SW3==00 && SW2 !=0)) //checking start operation 
 	{
-			// main switch case
+			while(1)
+	{
+	  lcd_cmd(first_line1); //first line
+	  lcd_write_string("Cooking Option");
+	  lcd_cmd(first_line2);
+		lcd_write_string(" Enter letter:");
+		
+		Return_=Keypad_Getkey(); //Return_ contain the option pressed
+		
+		switch(Return_)
+		{
+			case 'A':  //popcorn cooking
+			{
+				pop_corn();
+			  food_ready();
+			}
+			break;
+			
+			case 'B':  //beef cooking
+			{
+				 lcd_cmd(lcd_Clear);
+				 Beef();
+				 food_ready();
+			}
+			break;
+			
+			case 'C':  //chicken cooking
+			{
+				 lcd_cmd(lcd_Clear); 
+				 chicken();
+				 food_ready();
+			}
+			break;
+			
+			case 'D':  //manual cooking time
+			{
+				take_cooking_time();
+				food_ready();
+			}
+			break;
+			
+			default:
+			{
+				
+			}
+			break;
+		}
 	}
 	
 	

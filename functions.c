@@ -93,3 +93,44 @@ int SW3_input(void){
 	return(GPIO_PORTD_DATA_R&0x2);	
 }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//runing
+void runing_time_leds(void)
+{
+	PortF_Init ();
+	GPIO_PORTF_DATA_R |=0x0E; 
+}
+
+// paused
+void paused_time_leds (void)
+{
+		PortF_Init ();
+	 while (SW1==0 || SW2==0)
+	 {
+		
+		GPIO_PORTF_DATA_R |=0x0E; 
+	  Systick_n10ms(300);
+		GPIO_PORTF_DATA_R &=~0x0E;
+		Systick_n10ms(300);
+	 }
+	
+}
+
+
+
+
+

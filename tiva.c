@@ -30,4 +30,27 @@ int main()
 	lcd_write_string("Cooking Option:");
 	Systick_n10ms(300); //delay
 	
+	
+	
+	
+	if (SW3==00 && SW2 !=0)     //checking close door
+		{ lcd_cmd(first_line1); 
+			lcd_write_string("Click SWitch 2");
+			lcd_cmd(first_line2);
+	  	lcd_write_string("  to start ");
+		}
+		
+	else if ((SW3==00 && SW2 !=0)) //checking start operation 
+	{
+			// main switch case
+	}
+	
+	
+	else if (SW3 !=0)  // open door alert
+	{
+		lcd_cmd(first_line1); 
+	  lcd_write_string("Please close");
+	  lcd_cmd(first_line2);
+		lcd_write_string("    the door ");
+	}
 }

@@ -39,3 +39,38 @@ extern int temp_value_min;
 					button='3';
 				}
 			}
+			switch(button)
+			{
+				case '1': 
+				{
+					pause ();
+				 paused_time_leds();
+				} break;
+				
+					case '2':
+				{
+				counts_min_sec(temp_value_min,temp_value_sec);
+        runing_time_leds();					
+				} break;
+				
+					case '3':
+				{
+					stop ();
+					food_ready();
+				} break;
+			
+			}
+		}
+		else if (SW3!=0)
+		{
+		    pause ();
+			paused_time_leds();
+			
+		if (SW3=0)
+		{
+				counts_min_sec(temp_value_min,temp_value_sec);
+        runing_time_leds();	
+		}
+		}
+		
+	}

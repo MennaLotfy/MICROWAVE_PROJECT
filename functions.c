@@ -21,8 +21,19 @@ extern int temp_value_min;
 
 
 
+<<<<<<< Updated upstream
+=======
+//systic function
 
 
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 // convertin integers to characters
 
 // Function to swap two numbers
@@ -84,6 +95,9 @@ char* itoa(int value, char* buffer, int base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
+<<<<<<< Updated upstream
+ 
+=======
 
 
 
@@ -94,8 +108,28 @@ int SW3_input(void){
 	
 	return(GPIO_PORTD_DATA_R&0x2);	
 }
- 
 
+//return switch two and three
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
+
+
+
+
+
+
+
+
+
+
+ 
+//food ready function
 
 
 
@@ -132,6 +166,26 @@ void paused_time_leds (void)
 	
 }
 
+
+
+//Switches pressed cases
+		void pause () //sw1 is pressed for 1st time
+		{	 
+			 lcd_gotoxy(5,1);
+			lcd_write_string("Paused");
+		}
+		
+		void stop () //sw1 is pressed for 2nd time
+		{
+			s=0;
+			m=0;
+			lcd_cmd(lcd_Clear);
+			lcd_gotoxy(7,2);
+			lcd_write_string("00:00");
+		}
+		
+		
+		
 
 
 

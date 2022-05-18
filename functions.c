@@ -18,11 +18,6 @@ extern int temp_value_sec;
 extern int temp_value_min;
 
 
-
-
-
-<<<<<<< Updated upstream
-=======
 //systic function
 
 
@@ -33,7 +28,7 @@ extern int temp_value_min;
 
 
 
->>>>>>> Stashed changes
+
 // convertin integers to characters
 
 // Function to swap two numbers
@@ -95,9 +90,46 @@ char* itoa(int value, char* buffer, int base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
-<<<<<<< Updated upstream
- 
-=======
+
+
+//Leds options
+
+// to end cooking function (blinking and buzzer)
+
+
+//runing blinkig mode
+void runing_time_leds(void)
+{
+	PortF_Init ();
+	GPIO_PORTF_DATA_R |=0x0E; 
+}
+
+// pause blinking mode
+void paused_time_leds (void)
+{
+	 while (1)
+	 {
+		GPIO_PORTF_DATA_R |=0x0E; 
+	  Systick_n10ms(50);
+		GPIO_PORTF_DATA_R &=~0x0E;
+		Systick_n10ms(50);
+	  if ((Read_SW()&0x01)==0||(Read_SW()&0x10)==0)
+		{
+			break;
+		}
+		else if (SW1!=0 && SW3_input()!=0)
+		{
+			break;
+		}
+	 }
+}
+
+
+
+
+
+
+
 
 
 

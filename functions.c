@@ -1,14 +1,14 @@
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 #include "string.h"
-#include "STD_TYPES.h"
 #include "KPD.h"
 #include "LCD.h"
 #include "stdlib.h"
 #include "GPIO_INIT.h"
 #include "timer_min_sec.h"
+#include "functions.h"
+#define Delay_Value 800000
 
-#define Delay_Value 160000
 extern int s;
 extern int m;
 extern int SW1 ;
@@ -18,11 +18,6 @@ extern int temp_value_sec;
 extern int temp_value_min;
 
 
-
-
-
-<<<<<<< Updated upstream
-=======
 //systic function
 
 
@@ -33,7 +28,7 @@ extern int temp_value_min;
 
 
 
->>>>>>> Stashed changes
+
 // convertin integers to characters
 
 // Function to swap two numbers
@@ -95,41 +90,12 @@ char* itoa(int value, char* buffer, int base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
-<<<<<<< Updated upstream
- 
-=======
 
 
 
+//Leds options
 
-
-// return switch three
-int SW3_input(void){
-	
-	return(GPIO_PORTD_DATA_R&0x2);	
-}
-
-//return switch two and three
-
-
-
-
-
-
-
->>>>>>> Stashed changes
-
-
-
-
-
-
-
-
-
-
- 
-//food ready function
+// to end cooking function (blinking and buzzer)
 
 
 
@@ -144,46 +110,76 @@ int SW3_input(void){
 
 
 
-//runing
+
+
+
+//runing blinkig mode
 void runing_time_leds(void)
 {
 	PortF_Init ();
 	GPIO_PORTF_DATA_R |=0x0E; 
 }
 
-// paused
+// pause blinking mode
 void paused_time_leds (void)
 {
-		PortF_Init ();
-	 while (SW1==0 || SW2==0)
+	 while (1)
 	 {
-		
 		GPIO_PORTF_DATA_R |=0x0E; 
-	  Systick_n10ms(300);
+	  Systick_n10ms(50);
 		GPIO_PORTF_DATA_R &=~0x0E;
-		Systick_n10ms(300);
+		Systick_n10ms(50);
+	  if ((Read_SW()&0x01)==0||(Read_SW()&0x10)==0)
+		{
+			break;
+		}
+		else if (SW1!=0 && SW3_input()!=0)
+		{
+			break;
+		}
 	 }
-	
 }
 
 
 
+
+
+
+//switches return
+
+//SW#
+
+int SW3_input(void){
+		
+	return(GPIO_PORTE_DATA_R&0X20);
+}
+
+//SW1 & SW2
+
+uint32_t Read_SW()
+{
+	return (GPIO_PORTF_DATA_R) & 0x11;	
+}
+
+
+
+
 //Switches pressed cases
-		void pause () //sw1 is pressed for 1st time
-		{	 
-			 lcd_gotoxy(5,1);
-			lcd_write_string("Paused");
-		}
+void pause () //sw1 is pressed for 1st time
+{					
+	lcd_cmd(lcd_Home);
+	lcd_write_string("      Paused     ");		
+}
 		
-		void stop () //sw1 is pressed for 2nd time
-		{
-			s=0;
-			m=0;
-			lcd_cmd(lcd_Clear);
-			lcd_gotoxy(7,2);
-			lcd_write_string("00:00");
-		}
 		
+void stop () //sw1 is pressed for 2nd time
+{
+	lcd_cmd(lcd_Clear);
+	lcd_cmd(first_line2);
+	lcd_write_string("      00:00     ");
+	s=0;
+	m=0;
+}
 		
 		
 

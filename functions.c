@@ -1,14 +1,14 @@
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 #include "string.h"
-#include "STD_TYPES.h"
 #include "KPD.h"
 #include "LCD.h"
 #include "stdlib.h"
 #include "GPIO_INIT.h"
 #include "timer_min_sec.h"
+#include "functions.h"
+#define Delay_Value 800000
 
-#define Delay_Value 160000
 extern int s;
 extern int m;
 extern int SW1 ;
@@ -92,9 +92,25 @@ char* itoa(int value, char* buffer, int base)
 }
 
 
+
 //Leds options
 
 // to end cooking function (blinking and buzzer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //runing blinkig mode
@@ -129,93 +145,41 @@ void paused_time_leds (void)
 
 
 
+//switches return
 
+//SW#
 
-
-
-
-
-// return switch three
 int SW3_input(void){
-	
-	return(GPIO_PORTD_DATA_R&0x2);	
-}
-
-//return switch two and three
-
-
-
-
-
-
-
->>>>>>> Stashed changes
-
-
-
-
-
-
-
-
-
-
- 
-//food ready function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//runing
-void runing_time_leds(void)
-{
-	PortF_Init ();
-	GPIO_PORTF_DATA_R |=0x0E; 
-}
-
-// paused
-void paused_time_leds (void)
-{
-		PortF_Init ();
-	 while (SW1==0 || SW2==0)
-	 {
 		
-		GPIO_PORTF_DATA_R |=0x0E; 
-	  Systick_n10ms(300);
-		GPIO_PORTF_DATA_R &=~0x0E;
-		Systick_n10ms(300);
-	 }
-	
+	return(GPIO_PORTE_DATA_R&0X20);
 }
+
+//SW1 & SW2
+
+uint32_t Read_SW()
+{
+	return (GPIO_PORTF_DATA_R) & 0x11;	
+}
+
 
 
 
 //Switches pressed cases
-		void pause () //sw1 is pressed for 1st time
-		{	 
-			 lcd_gotoxy(5,1);
-			lcd_write_string("Paused");
-		}
+void pause () //sw1 is pressed for 1st time
+{					
+	lcd_cmd(lcd_Home);
+	lcd_write_string("      Paused     ");		
+}
 		
-		void stop () //sw1 is pressed for 2nd time
-		{
-			s=0;
-			m=0;
-			lcd_cmd(lcd_Clear);
-			lcd_gotoxy(7,2);
-			lcd_write_string("00:00");
-		}
 		
+void stop () //sw1 is pressed for 2nd time
+{
+	lcd_cmd(lcd_Clear);
+	lcd_cmd(first_line2);
+	lcd_write_string("      00:00     ");
+	s=0;
+	m=0;
+}
 		
 		
 

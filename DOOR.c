@@ -5,7 +5,7 @@
 #include "timer_min_sec.h"
 #include "functions.h"
 #include "stdlib.h"
-
+void switch_cases();
 extern int s;
 extern int m;
 extern int SW1 ;
@@ -13,32 +13,20 @@ extern int SW2 ;
 extern int SW3 ;
 extern int temp_value_sec;
 extern int temp_value_min;
-
+char button;
 
 //checking if any switches is pressed
-	void switches ()
-		{ 
-      char button;	  
+void switches ()
+{ 
+	  while (1)
+   	{		     	  
 			SW3=SW3_input();
-			SW2=SW2_input();
-			SW1=SW1_input();
-			
-		if (SW3==0)	
-		{
-			if (SW1==0)
-			{
-				button='1';
-				
-				if (SW2==0 && SW3==0)
-				{
-					button='2';
-				}
-				else if (SW1==0)
-				{
-					
-					button='3';
-				}
-			}
+			if (SW3!=0)	
+		  { 
+				SW1=(Read_SW()&0x10);				
+			  if (SW1==0) 
+			  {
+					button='1';
 			switch(button)
 			{
 				case '1': 
@@ -61,16 +49,26 @@ extern int temp_value_min;
 			
 			}
 		}
-		else if (SW3!=0)
-		{
-		    pause ();
-			paused_time_leds();
-			
-		if (SW3=0)
-		{
-				counts_min_sec(temp_value_min,temp_value_sec);
-        runing_time_leds();	
-		}
-		}
+	 else if (SW3==0)
+		    {
+					button='1';
+					switch_cases();
+					if(SW3_input()!=0)
+					{
+						  button='2';
+							switch_cases();
+							break;
+					}
+					break;
+				}
+
+
+				
+			if (SW1 !=0)
+			{
+				break;
+			}
+	  }	
 		
-	}
+  }
+		

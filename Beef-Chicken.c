@@ -56,7 +56,7 @@ void kilos_check_chicken (void) //calculating the timer from number fo kilos ent
 		kilos_check_chicken();
 	}
 
-};
+}
 	
 	
 void chicken (void) // C for chicken cooking
@@ -108,7 +108,7 @@ void kilos_check_Beef (void) //calculating the timer from number fo kilos entere
 		kilos_check_Beef();
 	}
 
-};
+}
 
 
 

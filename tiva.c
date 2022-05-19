@@ -26,12 +26,8 @@ int main()
 	Intialize_Systick();
 	lcd_cmd(first_line1); //first line
 	lcd_write_string("CSE211s Project");
-	lcd_cmd(first_line2);
-	lcd_write_string(" Press switch 2 ");
 	Systick_n10ms(100); //delay
 	
-	
-	while((Read_SW()&0x01)!=0){}
 	
 	while(1)
   {
@@ -45,7 +41,7 @@ int main()
 			lcd_cmd(first_line1); //first line
 			lcd_write_string("Cooking Option");
 			lcd_cmd(first_line2);
-			lcd_write_string(" Enter letter:");
+			lcd_write_string("choose option :");
 		
 			Return_=Keypad_Getkey(); //Return_ contain the option pressed
 		
@@ -78,7 +74,7 @@ int main()
 			  default:
 				{
 					lcd_cmd(lcd_Clear);
-				  lcd_write_string(" Please choose");
+				  lcd_write_string("  Please choose ");
 	        lcd_cmd(first_line2);
 		      lcd_write_string(" a valid option ");
 					Systick_n10ms(100);
@@ -91,7 +87,7 @@ int main()
 	 else if (SW3 !=0)  // open door alert
 	 {
 		lcd_cmd(first_line1); 
-	  lcd_write_string("Please close");
+	  lcd_write_string("  Please close");
 	  lcd_cmd(first_line2);
 		lcd_write_string("    the door ");
 		 

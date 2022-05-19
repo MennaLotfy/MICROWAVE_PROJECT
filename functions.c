@@ -177,6 +177,8 @@ void stop () //sw1 is pressed for 2nd time
 	lcd_cmd(lcd_Clear);
 	lcd_cmd(first_line2);
 	lcd_write_string("      00:00     ");
+	lcd_cmd(first_line1);
+	lcd_write_string("   Reset timer  ");
 	s=0;
 	m=0;
 }

@@ -27,28 +27,30 @@ void switches ()
 			  if (SW1==0) 
 			  {
 					button='1';
-			switch(button)
-			{
-				case '1': 
-				{
-					pause ();
-				 paused_time_leds();
-				} break;
-				
-					case '2':
-				{
-				counts_min_sec(temp_value_min,temp_value_sec);
-        runing_time_leds();					
-				} break;
-				
-					case '3':
-				{
-					stop ();
-					food_ready();
-				} break;
-			
-			}
-		}
+			switch_cases();
+					while (1)
+					{
+						SW2=(Read_SW()&0x01);
+						SW1=(Read_SW()&0x10);
+						SW3=SW3_input();
+					
+						if (SW2==0 && SW3!=0)
+						{
+							button='2';
+							switch_cases();
+							break;
+						}
+						
+						else if (SW1==0 && SW3!=0)
+						{	
+							button='3';
+							switch_cases();
+							break;
+						}
+					}	
+				 }
+				}	
+
 	 else if (SW3==0)
 		    {
 					button='1';
@@ -71,4 +73,31 @@ void switches ()
 	  }	
 		
   }
+
+	void switch_cases()
+	{
+				switch(button)
+			{
+				case '1': //pause
+				{	
+					 pause();
+				   paused_time_leds();
+			 }
+				
+				break;
+				
+					case '2': //continue
+				{
+				lcd_cmd(lcd_Clear);
+				counts_min_sec(temp_value_min,temp_value_sec);
+				}
+				break;
+				
+					case '3': //reset
+				{
+					stop(); 
+				} 
+				break;		
+			}
+		}		
 		

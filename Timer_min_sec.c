@@ -18,6 +18,10 @@ char* char_min=M;
 char*	char_sec=S;
 extern int s;
 extern int m;
+extern int SW1 ;
+extern int SW2 ;
+extern int SW3 ;
+
 
 //LCD display
 void timer_display_seconds ()
@@ -64,22 +68,25 @@ void counts_min_sec(int min, int sec )
 			 char_min[0]='0';
 		  timer_display_minutes ();
 					}		
-			for (s=s; s>=0 ;s--)
+			for (; s>=0 ;s--)
 		{
 			if (s>=10)
 			{
-				temp_value_sec=s;
-		char_sec=itoa(s, buffer2, 10);
+				
+		char_sec=itoa(s, buffer2, 10);	
 			timer_display_seconds ();
+				temp_value_sec=s;
+				temp_value_min=m;
 				switches();
 			}
 			else if (s<10)
 			{
-				temp_value_sec=s;
 		char_sec=itoa(s, buffer2, 10);
 				char_sec[1]=char_sec[0];
 				char_sec[0]='0';
 			timer_display_seconds ();
+				temp_value_sec=s;
+				temp_value_min=m;
 				switches();
 					}
 		}

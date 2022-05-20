@@ -89,6 +89,9 @@ void switches ()
 					case '2': //continue
 				{
 				lcd_cmd(lcd_Clear);
+				lcd_cmd(first_line1);
+			  lcd_write_string("     continue  ");
+					
 				counts_min_sec(temp_value_min,temp_value_sec);
 				}
 				break;

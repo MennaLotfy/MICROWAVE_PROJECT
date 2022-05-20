@@ -8,20 +8,25 @@
 #include "functions.h"
 #include "GPIO_INIT.h"
 
+extern m,s;
+
 //take_cooking_time function returns "1" if taking the time is successful,
 //returns "0" if the entered time is invalid *not between 1-30*,
-//returns *2* otherwise.
+//returns *2* if letters are entered.
 
 uint32_t take_cooking_time(void)
 {
-	char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keyboard
+	char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keypad
   char text_s[10] = {'0','0',0};       //temp array to store the digits entered
-	char text_m[10] = {'0','0',0};
-	uint32_t m,s;	                           //variables to store the changed values(m and s) from char to integers
+	char text_m[10] = {'0','0',0};                           //variables to store the changed values(m and s) from char to integers
 	lcd_gotoxy(7,2);
 	lcd_write_string("00:00");
 	
 	D1=Keypad_Getkey();                 //taking the first digit from the keypad
+	if((D1=='A') || (D1=='B') || (D1=='C') || (D1=='D') || (D1=='#') || (D1=='*'))
+	{
+		return 2;
+	}
 	lcd_gotoxy(11,2);
 	lcd_write(D1);
 	delay_ms(100);
@@ -36,6 +41,10 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D2=Keypad_Getkey();               //taking the second digit from the keypad
+	if((D2=='A') || (D2=='B') || (D2=='C') || (D2=='D') || (D2=='#') || (D2=='*'))
+	{
+		return 2;
+	}
 	lcd_gotoxy(10,2);
 	lcd_write(D1);
 	delay_ms(100);
@@ -54,6 +63,10 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D3=Keypad_Getkey();            //taking the third digit from the keypad
+	if((D3=='A') || (D3=='B') || (D3=='C') || (D3=='D') || (D3=='#') || (D3=='*'))
+	{
+		return 2;
+	}
 	lcd_gotoxy(8,2);
 	lcd_write(D1);
 	delay_ms(100);
@@ -79,6 +92,10 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D4=Keypad_Getkey();           //taking the fourth digit from the keypad
+	if((D4=='A') || (D4=='B') || (D4=='C') || (D4=='D') || (D4=='#') || (D4=='*'))
+	{
+		return 2;
+	}
 	lcd_gotoxy(7,2);
 	lcd_write(D1);
 	delay_ms(100);
@@ -114,7 +131,6 @@ uint32_t take_cooking_time(void)
 		}
 		
 	}	
-	return 2;
 }
 
 void Option_D()
@@ -131,23 +147,28 @@ void Option_D()
 		{
 			if((Read_SW()&0x10)==0x00)
 			{
-				GPIO_PORTF_DATA_R|=Red;
 				lcd_cmd(lcd_Clear);
-			}
-			if((Read_SW()&0x01)==0x00)
-			{
-				GPIO_PORTF_DATA_R|=Blue;
-				//start timer
-				lcd_write_string("  Cooking Done  ");
+				delay_ms(1000);
 				break;
 			}
-		}
+		}		
+		counts_min_sec(m,s);
+		food_ready;
 	}
-	
 	else if(take_cooking_time_return==0)
 	{
 		lcd_cmd(lcd_Clear);
  	  lcd_write_string("Enter valid time");
+		delay_ms(6000);
+		lcd_cmd(lcd_Clear);
+		goto Vaild;
+	}
+	else if(take_cooking_time_return==2)
+	{
+		lcd_cmd(lcd_Clear);
+ 	  lcd_write_string("Enter numbers");
+		lcd_cmd(first_line2);
+		lcd_write_string("Only");
 		delay_ms(6000);
 		lcd_cmd(lcd_Clear);
 		goto Vaild;

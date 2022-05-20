@@ -17,6 +17,7 @@ int SW3 ;
 
 int main()
 {
+	enum Options {PopCorn='A', Beef='B', Chicken='C', CustomTime='D'};
 	u8 Return_;
 	PortE_Init();
 	PortB_Init();
@@ -26,6 +27,7 @@ int main()
 	Intialize_Systick();
 	lcd_cmd(first_line1); //first line
 	lcd_write_string("CSE211s Project");
+<<<<<<< Updated upstream
 	lcd_cmd(first_line2);
 	lcd_write_string("Cooking Option:");
 	Systick_n10ms(300); //delay
@@ -36,6 +38,19 @@ int main()
 	if (SW3==00 && SW2 !=0)     //checking close door
 		{ lcd_cmd(first_line1); 
 			lcd_write_string("Click SWitch 2");
+=======
+	Systick_n10ms(100); //delay
+	while(1)
+  {
+		SW3=SW3_input();
+		SW1=(Read_SW()&0x10);
+		
+		if (SW3!=0)
+		{
+			lcd_cmd(lcd_Clear);
+			lcd_cmd(first_line1); //first line
+			lcd_write_string("Cooking Option");
+>>>>>>> Stashed changes
 			lcd_cmd(first_line2);
 	  	lcd_write_string("  to start ");
 		}
@@ -55,6 +70,7 @@ int main()
 		{
 			case 'A':  //popcorn cooking
 			{
+<<<<<<< Updated upstream
 				pop_corn();
 			  food_ready();
 			}
@@ -82,6 +98,31 @@ int main()
 				food_ready();
 			}
 			break;
+=======
+				case PopCorn:  //popcorn cooking
+				{
+					pop_corn();
+				}
+				break;
+			
+				case Beef:  //beef cooking
+				{
+				  Beef();
+				}
+				break;
+			
+				case Chicken:  //chicken cooking
+				{
+					chicken();
+		  	}
+			  break;
+			
+				case CustomTime:  //manual cooking time
+				{
+					Option_D();
+				}
+				break;
+>>>>>>> Stashed changes
 			
 			default:
 			{

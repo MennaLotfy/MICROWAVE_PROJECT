@@ -1,3 +1,5 @@
+<<<<<<< Updated upstream
+=======
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 #include "string.h"
@@ -18,7 +20,29 @@ extern int temp_value_sec;
 extern int temp_value_min;
 
 
-//systic function
+void Intialize_Systick() //here we intialize the systick timer
+{
+	NVIC_ST_CTRL_R = 0;
+	NVIC_ST_RELOAD_R =0x00FFFFFF;
+	NVIC_ST_CURRENT_R=0;
+	NVIC_ST_CTRL_R |= 0x00000005;
+}
+
+void Systick(uint32_t delay) // function that makes systick timer count 10ms
+{ 
+	NVIC_ST_RELOAD_R = delay-1;
+	NVIC_ST_CURRENT_R=0;
+	while((NVIC_ST_CTRL_R&0x00010000)==0){}
+}
+
+void Systick_n10ms(uint32_t n) // timer= n*10ms
+{
+	unsigned long i;
+	for(i=0;i<n;i++)
+	{
+		Systick(Delay_Value);
+	}
+}
 
 
 
@@ -178,8 +202,7 @@ void stop () //sw1 is pressed for 2nd time
 	lcd_cmd(first_line2);
 	lcd_write_string("      00:00     ");
 	lcd_cmd(first_line1);
-	lcd_write_string("   Timer reset  ");
-	delay_ms(1000);
+	lcd_write_string("   Reset timer  ");
 	s=0;
 	m=0;
 }
@@ -189,3 +212,4 @@ void stop () //sw1 is pressed for 2nd time
 
 
 
+>>>>>>> Stashed changes

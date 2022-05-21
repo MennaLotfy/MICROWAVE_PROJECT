@@ -50,6 +50,17 @@ void timer_display_minutes ()
 // Timer
 void counts_min_sec(int min, int sec )
 { 
+	if (s!=temp_value_sec || m!=temp_value_min)
+		
+	{
+		lcd_cmd(first_line1); //first line
+		lcd_write_string(" Press SW 2 to ");
+		lcd_cmd(first_line2); //Second line
+		lcd_write_string("   start oven   ");
+	
+		while((Read_SW()&0x01)!=0){};	
+		lcd_cmd(lcd_Clear);
+	}
 	
 	 runing_time_leds();
 	 s=sec;
@@ -93,24 +104,33 @@ void counts_min_sec(int min, int sec )
 		if (m>=10)
 			{
 				s=59;
-				temp_value_sec=s;
+				char_min=itoa(m, buffer2, 10);
+				timer_display_minutes ();
 				temp_value_min=m;
-		char_min=itoa(m, buffer2, 10);
-			timer_display_minutes ();
+				temp_value_sec=s;
 				switches();
 			}
-		
+			else if(m<10)
+			{
+					
 						s=59;
-						temp_value_sec=s;
-				    temp_value_min=m;
-	    	char_min=itoa(m, buffer2, 10);
+				    char_min=itoa(m, buffer2, 10);
 				    char_min[1]=char_min[0];
 				    char_min[0]='0';
-			      timer_display_minutes ();
-						switches();
+				    timer_display_minutes ();
+				    temp_value_min=m;
+						temp_value_sec=s;
+				    switches();
+				if((m-1)==-1)
+				{
+					s=0;
+				return;
+			}
+	   }
+					
 					
 			}
 		}
 
 	
-	// countinue seconds counting
+	

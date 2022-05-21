@@ -68,69 +68,65 @@ void counts_min_sec(int min, int sec )
 	for (m = min ; m>=0 ; m--)
 	{
 		if (m>=10)
-			{
-		char_min=itoa(m, buffer2, 10);
+		{
+			char_min=itoa(m, buffer2, 10);
 			timer_display_minutes  ();
-			}
-	else if (m<10)
-			{
-	  	char_min=itoa(m, buffer2, 10);
-			 char_min[1]=char_min[0];
-			 char_min[0]='0';
+		}
+		else if (m<10)
+		{
+			char_min=itoa(m, buffer2, 10);
+			char_min[1]=char_min[0];
+			char_min[0]='0';
 		  timer_display_minutes ();
-					}		
-			for (; s>=0 ;s--)
+		}		
+		for (; s>=0 ;s--)
 		{
 			if (s>=10)
-			{
-				
-		char_sec=itoa(s, buffer2, 10);	
-			timer_display_seconds ();
+		  {
+				char_sec=itoa(s, buffer2, 10);	
+				timer_display_seconds ();
 				temp_value_sec=s;
 				temp_value_min=m;
 				switches();
 			}
 			else if (s<10)
 			{
-		char_sec=itoa(s, buffer2, 10);
+		    char_sec=itoa(s, buffer2, 10);
 				char_sec[1]=char_sec[0];
 				char_sec[0]='0';
-			timer_display_seconds ();
+			  timer_display_seconds ();
 				temp_value_sec=s;
 				temp_value_min=m;
-				switches();
-					}
-		}
-		if (m>=10)
-			{
-				s=59;
-				char_min=itoa(m, buffer2, 10);
-				timer_display_minutes ();
-				temp_value_min=m;
-				temp_value_sec=s;
 				switches();
 			}
-			else if(m<10)
+		}
+		if (m>=10)
+		{
+			s=59;
+			char_min=itoa(m, buffer2, 10);
+			timer_display_minutes ();
+			temp_value_min=m;
+			temp_value_sec=s;
+			switches();
+		}
+		else if(m<10)
+		{
+			s=59;
+		  char_min=itoa(m, buffer2, 10);
+			char_min[1]=char_min[0];
+			char_min[0]='0';
+			timer_display_minutes ();
+		  temp_value_min=m;
+			temp_value_sec=s;
+			switches();
+			if((m-1)==-1)
 			{
-					
-						s=59;
-				    char_min=itoa(m, buffer2, 10);
-				    char_min[1]=char_min[0];
-				    char_min[0]='0';
-				    timer_display_minutes ();
-				    temp_value_min=m;
-						temp_value_sec=s;
-				    switches();
-				if((m-1)==-1)
-				{
-					s=0;
+				s=0;
 				return;
 			}
 	   }
-					
-					
-			}
-		}
+ }
+}
 
 	
 	

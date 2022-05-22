@@ -183,9 +183,13 @@ void stop () //sw1 is pressed for 2nd time
 	s=0;
 	m=0;
 }
+<<<<<<< Updated upstream
 		
 		
 
 
 
 
+=======
+		
+>>>>>>> Stashed changes

@@ -1,3 +1,16 @@
+#include "GPIO_INIT.h"
+#include "tm4c123gh6pm.h"
+#include <Math.h>
+#define PI 3.14159265359
+#include <string.h> // For strtok function
+#include <stdlib.h> // For strtod function
+#include "LCD.h"
+
+/* IO Ports Initialization Functions Implementations*/
+
+
+
+
 void PortB_Init ()
 { 
 	SYSCTL_RCGCGPIO_R |= 0x00000002;
@@ -11,4 +24,24 @@ void PortB_Init ()
 	GPIO_PORTB_PCTL_R = 0x00000000;
   GPIO_PORTB_PUR_R = 0x00;
   
+}
+
+
+
+
+
+
+
+
+void delay_ms(int t) // Milli seconds delay function
+{
+	int i;
+	int j;
+	for(i=0 ; i<t ; i++)
+	{
+		for(j=0; j<3180; j++)
+		{
+			
+		}
+	}
 }

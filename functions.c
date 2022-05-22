@@ -20,6 +20,10 @@ extern int temp_value_sec;
 extern int temp_value_min;
 
 
+<<<<<<< Updated upstream
+=======
+//systic function
+>>>>>>> Stashed changes
 void Intialize_Systick() //here we intialize the systick timer
 {
 	NVIC_ST_CTRL_R = 0;
@@ -34,6 +38,7 @@ void Systick(uint32_t delay) // function that makes systick timer count 10ms
 	NVIC_ST_CURRENT_R=0;
 	while((NVIC_ST_CTRL_R&0x00010000)==0){}
 }
+<<<<<<< Updated upstream
 
 void Systick_n10ms(uint32_t n) // timer= n*10ms
 {
@@ -43,7 +48,17 @@ void Systick_n10ms(uint32_t n) // timer= n*10ms
 		Systick(Delay_Value);
 	}
 }
+=======
+>>>>>>> Stashed changes
 
+void Systick_n10ms(uint32_t n) // timer= n*10ms
+{
+	unsigned long i;
+	for(i=0;i<n;i++)
+	{
+		Systick(Delay_Value);
+	}
+}
 
 
 

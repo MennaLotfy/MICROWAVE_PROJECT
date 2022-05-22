@@ -11,6 +11,7 @@ extern int m;
 extern int SW1 ;
 extern int SW2 ;
 extern int SW3 ;
+extern u8 Return_;
 extern int temp_value_sec;
 extern int temp_value_min;
 char button;
@@ -22,7 +23,7 @@ void switches ()
    	{		     	  
 			SW3=SW3_input();
 			if (SW3!=0)	
-		        { 
+		  { 
 				SW1=(Read_SW()&0x10);				
 			  if (SW1==0) 
 			  {
@@ -48,8 +49,8 @@ void switches ()
 							break;
 						}
 					}	
-				    }
-				} 	
+				 }
+				}	
 
 	 else if (SW3==0)
 		    {
@@ -77,22 +78,40 @@ void switches ()
 	void switch_cases()
 	{
 				switch(button)
-			     {
+			{
 				case '1': //pause
 				{	
 					 pause();
 				   paused_time_leds();
-			        }
+			 }
 				
 				break;
 				
 					case '2': //continue
 				{
-			        	lcd_cmd(lcd_Clear);
-			         	lcd_cmd(first_line1);
-			                 lcd_write_string("     continue  ");
-					
-				        counts_min_sec(temp_value_min,temp_value_sec);
+				lcd_cmd(lcd_Clear);
+				lcd_cmd(first_line1);
+			  if (Return_=='A')
+        {
+					lcd_cmd(lcd_Home);
+					lcd_write_string("Popcorn...");
+				}
+				else if (Return_=='B')
+        {
+					lcd_cmd(lcd_Home);
+					lcd_write_string("Beef...");
+				}
+				else if (Return_=='C')
+        {
+					lcd_cmd(lcd_Home);
+					lcd_write_string("Chicken...");
+				}
+				else if (Return_=='D')
+        {
+					lcd_cmd(lcd_Home);
+					lcd_write_string("Cooking...");
+				}		
+				counts_min_sec(temp_value_min,temp_value_sec);
 				}
 				break;
 				
@@ -101,6 +120,6 @@ void switches ()
 					stop(); 
 				} 
 				break;		
-			      }
+			}
 		}		
 		

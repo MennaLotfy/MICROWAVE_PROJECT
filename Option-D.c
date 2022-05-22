@@ -34,7 +34,7 @@ uint32_t take_cooking_time(void)
 	{
 		text_s[1]= D1;
 		s=atoi(text_s);
-		if(Keypad_Getkey()=='*')             //time taken, go to cook
+		if(Keypad_Getkey()=='S')             //time taken, go to cook
 		{
 			return 1;
 		}
@@ -56,7 +56,7 @@ uint32_t take_cooking_time(void)
 			text_s[0]=D1;
 			text_s[1]=D2;
 			s=atoi(text_s);
-		  if(Keypad_Getkey()=='*')            //time taken, go to cook
+		  if(Keypad_Getkey()=='S')            //time taken, go to cook
 		  {
 				return 1;
 		  }
@@ -85,7 +85,7 @@ uint32_t take_cooking_time(void)
 	  	text_m[1]=D1;
 	  	m=atoi(text_m);
       
-      if(Keypad_Getkey()=='*')     //time taken, go to cook
+      if(Keypad_Getkey()=='S')     //time taken, go to cook
 		  {
 				return 1;
 		  }		
@@ -123,7 +123,7 @@ uint32_t take_cooking_time(void)
 		}
 		while(1)
 		{
-			if(Keypad_Getkey()=='*')   //time taken, go to cook
+			if(Keypad_Getkey()=='S')   //time taken, go to cook
 		  {
 				return 1;
 		  }
@@ -142,18 +142,11 @@ void Option_D()
 	lcd_write_string("Cooking Time?");
 	take_cooking_time_return=take_cooking_time();
 	if(take_cooking_time_return==1)
-	{
-		while(1)
-		{
-			if((Read_SW()&0x10)==0x00)
-			{
-				lcd_cmd(lcd_Clear);
-				delay_ms(1000);
-				break;
-			}
-		}		
-		counts_min_sec(m,s);
-		food_ready;
+	{ 
+        lcd_cmd(lcd_Clear);
+        delay_ms(2000);
+	      counts_min_sec(m,s);
+        food_ready();
 	}
 	else if(take_cooking_time_return==0)
 	{

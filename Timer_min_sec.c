@@ -18,6 +18,7 @@ char* char_min=M;
 char*	char_sec=S;
 extern int s;
 extern int m;
+extern u8 Return_;
 extern int SW1 ;
 extern int SW2 ;
 extern int SW3 ;

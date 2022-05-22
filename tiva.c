@@ -14,10 +14,10 @@ int m ;
 int SW1 ;
 int SW2 ;
 int SW3 ;
+u8 Return_;
 
 int main()
 {
-	u8 Return_;
 	PortE_Init();
 	PortB_Init();
   PortF_Init();

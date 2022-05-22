@@ -135,6 +135,28 @@ char* itoa(int value, char* buffer, int base)
 //Leds options
 
 // to end cooking function (blinking and buzzer)
+void food_ready(void)
+{
+	unsigned long i;
+	lcd_cmd(lcd_Clear);
+	lcd_write_string(" Cooking done ");
+	lcd_cmd(first_line2);
+	lcd_write_string(" Hmmmm! ");
+	s=0;
+	for(i=0;i<3;i++)
+	{
+		GPIO_PORTE_DATA_R |=0x11;
+		GPIO_PORTF_DATA_R |=0x0E;
+		Systick_n10ms(100);
+		GPIO_PORTE_DATA_R &= ~(0x11);
+		GPIO_PORTF_DATA_R &=~0x0E;
+		Systick_n10ms(100);
+	}
+	lcd_cmd(lcd_Clear);
+	lcd_cmd(first_line2);
+	lcd_write_string("00:00");
+}
+
 
 
 

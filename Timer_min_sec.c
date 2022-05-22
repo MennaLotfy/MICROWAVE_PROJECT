@@ -18,6 +18,7 @@ char* char_min=M;
 char*	char_sec=S;
 extern int s;
 extern int m;
+extern u8 Return_;
 extern int SW1 ;
 extern int SW2 ;
 extern int SW3 ;
@@ -61,7 +62,26 @@ void counts_min_sec(int min, int sec )
 		while((Read_SW()&0x01)!=0){};	
 		lcd_cmd(lcd_Clear);
 	}
-	
+	if (Return_=='A')
+  {
+		lcd_cmd(lcd_Home);
+		lcd_write_string("Popcorn...");
+	}
+	else if (Return_=='B')
+  {
+		lcd_cmd(lcd_Home);
+		lcd_write_string("Beef...");
+	}
+	else if (Return_=='C')
+  {
+		lcd_cmd(lcd_Home);
+		lcd_write_string("Chicken...");
+	}
+	else if (Return_=='D')
+  {
+		lcd_cmd(lcd_Home);
+		lcd_write_string("Cooking...");
+	}
 	 runing_time_leds();
 	 s=sec;
 			

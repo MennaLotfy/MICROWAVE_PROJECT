@@ -22,7 +22,7 @@ void switches ()
    	{		     	  
 			SW3=SW3_input();
 			if (SW3!=0)	
-		  { 
+		        { 
 				SW1=(Read_SW()&0x10);				
 			  if (SW1==0) 
 			  {
@@ -48,8 +48,8 @@ void switches ()
 							break;
 						}
 					}	
-				 }
-				}	
+				    }
+				} 	
 
 	 else if (SW3==0)
 		    {
@@ -77,12 +77,12 @@ void switches ()
 	void switch_cases()
 	{
 				switch(button)
-			{
+			     {
 				case '1': //pause
 				{	
 					 pause();
 				   paused_time_leds();
-			 }
+			        }
 				
 				break;
 				
@@ -101,6 +101,6 @@ void switches ()
 					stop(); 
 				} 
 				break;		
-			}
+			      }
 		}		
 		

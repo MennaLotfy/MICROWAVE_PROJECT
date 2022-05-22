@@ -52,3 +52,13 @@ u8 Keypad_Getkey(void)
     }
   }
 }
+
+// Micro seconds delay function
+void delay_us(int t)
+{
+ int i,j;
+ for(i=0;i<t;i++)
+ for(j=0;j<3;j++)
+ {}
+ 
+}

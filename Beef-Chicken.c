@@ -62,7 +62,7 @@ void chicken (void) // C for chicken cooking
 {
 	lcd_cmd(lcd_Clear);
 	lcd_write_string("Chicken weight:");
-	Systick_n10ms(20);
+	Systick_n10ms(200);
   x=Keypad_Getkey();	
   kilos_check_chicken();
 	food_ready();
@@ -118,7 +118,7 @@ void Beef (void) // B for beef cooking
 {
 	lcd_cmd(lcd_Clear);
 	lcd_write_string("Beef weight:");
-	Systick_n10ms(20);
+	Systick_n10ms(200);
   x=Keypad_Getkey();
   kilos_check_Beef();
   food_ready();

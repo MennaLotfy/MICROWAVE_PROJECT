@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 #include "string.h"
@@ -19,14 +17,8 @@ extern int SW3 ;
 extern int temp_value_sec;
 extern int temp_value_min;
 
-<<<<<<< Updated upstream
 
-<<<<<<< Updated upstream
-=======
 //systic function
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 void Intialize_Systick() //here we intialize the systick timer
 {
 	NVIC_ST_CTRL_R = 0;
@@ -41,19 +33,7 @@ void Systick(uint32_t delay) // function that makes systick timer count 10ms
 	NVIC_ST_CURRENT_R=0;
 	while((NVIC_ST_CTRL_R&0x00010000)==0){}
 }
-<<<<<<< Updated upstream
 
-void Systick_n10ms(uint32_t n) // timer= n*10ms
-{
-	unsigned long i;
-	for(i=0;i<n;i++)
-	{
-		Systick(Delay_Value);
-	}
-}
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 
 void Systick_n10ms(uint32_t n) // timer= n*10ms
 {
@@ -64,15 +44,6 @@ void Systick_n10ms(uint32_t n) // timer= n*10ms
 	}
 }
 
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 
 // convertin integers to characters
 
@@ -163,26 +134,8 @@ void food_ready(void)
 	lcd_write_string("00:00");
 }
 
-<<<<<<< Updated upstream
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 //runing blinkig mode
 void runing_time_leds(void)
 {
@@ -244,13 +197,4 @@ void stop () //sw1 is pressed for 2nd time
 	s=0;
 	m=0;
 }
-<<<<<<< Updated upstream
-		
-		
 
-
-
-
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

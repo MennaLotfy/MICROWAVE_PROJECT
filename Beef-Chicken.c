@@ -113,6 +113,7 @@ void kilos_check_Beef (void) //calculating the timer from number fo kilos entere
 
 
 
+
 void Beef (void) // B for beef cooking
 {
 	lcd_cmd(lcd_Clear);

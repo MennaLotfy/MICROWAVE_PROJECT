@@ -24,6 +24,7 @@ int main()
 	Keypad_Init();
 	init_lcd();
 	Intialize_Systick();
+	lcd_cmd(lcd_Clear);
 	lcd_cmd(first_line1); //first line
 	lcd_write_string("CSE211s Project");
 	Systick_n10ms(100); //delay
@@ -84,8 +85,9 @@ int main()
 	}
 	
 	
-	 else if (SW3 !=0)  // open door alert
+	 else if (SW3 ==0)  // open door alert
 	 {
+		lcd_cmd(lcd_Clear);
 		lcd_cmd(first_line1); 
 	  lcd_write_string("  Please close");
 	  lcd_cmd(first_line2);

@@ -5,6 +5,7 @@
 #include "timer_min_sec.h"
 #include "functions.h"
 #include "stdlib.h"
+
 void switch_cases();
 extern int s;
 extern int m;
@@ -28,7 +29,7 @@ void switches ()
 			  if (SW1==0) 
 			  {
 					button='1';
-			switch_cases();
+		    	switch_cases();
 					while (1)
 					{
 						SW2=(Read_SW()&0x01);

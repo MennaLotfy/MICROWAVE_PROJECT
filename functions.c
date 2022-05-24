@@ -19,10 +19,13 @@ extern int SW3 ;
 extern int temp_value_sec;
 extern int temp_value_min;
 
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
 =======
 //systic function
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 void Intialize_Systick() //here we intialize the systick timer
 {
@@ -48,6 +51,7 @@ void Systick_n10ms(uint32_t n) // timer= n*10ms
 		Systick(Delay_Value);
 	}
 }
+<<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes
 
@@ -67,6 +71,8 @@ void Systick_n10ms(uint32_t n) // timer= n*10ms
 
 
 
+=======
+>>>>>>> Stashed changes
 
 // convertin integers to characters
 
@@ -157,6 +163,7 @@ void food_ready(void)
 	lcd_write_string("00:00");
 }
 
+<<<<<<< Updated upstream
 
 
 
@@ -174,6 +181,8 @@ void food_ready(void)
 
 
 
+=======
+>>>>>>> Stashed changes
 //runing blinkig mode
 void runing_time_leds(void)
 {
@@ -201,14 +210,9 @@ void paused_time_leds (void)
 	 }
 }
 
-
-
-
-
-
 //switches return
 
-//SW#
+//SW3
 
 int SW3_input(void){
 		
@@ -221,9 +225,6 @@ uint32_t Read_SW()
 {
 	return (GPIO_PORTF_DATA_R) & 0x11;	
 }
-
-
-
 
 //Switches pressed cases
 void pause () //sw1 is pressed for 1st time
@@ -243,10 +244,13 @@ void stop () //sw1 is pressed for 2nd time
 	s=0;
 	m=0;
 }
+<<<<<<< Updated upstream
 		
 		
 
 
 
 
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

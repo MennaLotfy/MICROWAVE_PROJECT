@@ -14,6 +14,11 @@ int m ;
 int SW1 ;
 int SW2 ;
 int SW3 ;
+<<<<<<< Updated upstream
+=======
+u8 Return_;
+enum Options {PopCorn='A', beef='B', Chicken='C', CustomTime='D'};
+>>>>>>> Stashed changes
 
 int main()
 {
@@ -71,6 +76,7 @@ int main()
 			case 'A':  //popcorn cooking
 			{
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				pop_corn();
 			  food_ready();
 			}
@@ -99,13 +105,19 @@ int main()
 			}
 			break;
 =======
+=======
+>>>>>>> Stashed changes
 				case PopCorn:  //popcorn cooking
 				{
 					pop_corn();
 				}
 				break;
 			
+<<<<<<< Updated upstream
 				case Beef:  //beef cooking
+=======
+				case beef:  //beef cooking
+>>>>>>> Stashed changes
 				{
 				  Beef();
 				}

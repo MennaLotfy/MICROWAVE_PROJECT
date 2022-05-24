@@ -26,9 +26,8 @@ void kilos_check_chicken (void) //calculating the timer from number fo kilos ent
   if ((x== '1')||(x== '2')||(x== '3')||(x== '4')||(x== '5')	||(x== '6')||(x== '7')||(x== '8')||(x== '9')) //integer from 1 to 9
 	{
 		lcd_cmd(lcd_Clear);
-		lcd_gotoxy(6,1);
+		lcd_gotoxy(8,1);
 		lcd_write(x);
-		lcd_gotoxy(7,1);
 		lcd_write_string("kg");
 		no_of_kilos[0]=x;
 		int_no_of_kilos=atoi(no_of_kilos);
@@ -61,10 +60,12 @@ void kilos_check_chicken (void) //calculating the timer from number fo kilos ent
 	
 void chicken (void) // C for chicken cooking
 {
+	lcd_cmd(lcd_Clear);
 	lcd_write_string("Chicken weight:");
 	Systick_n10ms(20);
   x=Keypad_Getkey();	
   kilos_check_chicken();
+	food_ready();
 }
 
 
@@ -79,7 +80,7 @@ void kilos_check_Beef (void) //calculating the timer from number fo kilos entere
   if ((x== '1')||(x== '2')||(x== '3')||(x== '4')||(x== '5')	||(x== '6')||(x== '7')||(x== '8')||(x== '9')) //integer from 1 to 9
 	{
 		lcd_cmd(lcd_Clear);
-		lcd_gotoxy(6,1);
+		lcd_gotoxy(8,1);
 		lcd_write(x) ; 
 		lcd_write_string("kg");
 		no_of_kilos[0]=x;
@@ -114,9 +115,10 @@ void kilos_check_Beef (void) //calculating the timer from number fo kilos entere
 
 void Beef (void) // B for beef cooking
 {
+	lcd_cmd(lcd_Clear);
 	lcd_write_string("Beef weight:");
 	Systick_n10ms(20);
   x=Keypad_Getkey();
   kilos_check_Beef();
-
+  food_ready();
 }

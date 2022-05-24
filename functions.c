@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 #include "string.h"
@@ -21,9 +19,11 @@ extern int temp_value_min;
 
 
 <<<<<<< Updated upstream
-=======
 //systic function
->>>>>>> Stashed changes
+
+=======
+
+//systic function
 void Intialize_Systick() //here we intialize the systick timer
 {
 	NVIC_ST_CTRL_R = 0;
@@ -38,7 +38,7 @@ void Systick(uint32_t delay) // function that makes systick timer count 10ms
 	NVIC_ST_CURRENT_R=0;
 	while((NVIC_ST_CTRL_R&0x00010000)==0){}
 }
-<<<<<<< Updated upstream
+
 
 void Systick_n10ms(uint32_t n) // timer= n*10ms
 {
@@ -48,23 +48,7 @@ void Systick_n10ms(uint32_t n) // timer= n*10ms
 		Systick(Delay_Value);
 	}
 }
-=======
 >>>>>>> Stashed changes
-
-void Systick_n10ms(uint32_t n) // timer= n*10ms
-{
-	unsigned long i;
-	for(i=0;i<n;i++)
-	{
-		Systick(Delay_Value);
-	}
-}
-
-
-
-
-
-
 
 
 
@@ -135,13 +119,15 @@ char* itoa(int value, char* buffer, int base)
 //Leds options
 
 // to end cooking function (blinking and buzzer)
+<<<<<<< Updated upstream
+=======
 void food_ready(void)
 {
 	unsigned long i;
 	lcd_cmd(lcd_Clear);
 	lcd_write_string(" Cooking done ");
 	lcd_cmd(first_line2);
-	lcd_write_string(" Hmmmm! ");
+	lcd_write_string("     Hmmmm!    ");
 	s=0;
 	for(i=0;i<3;i++)
 	{
@@ -157,6 +143,7 @@ void food_ready(void)
 	lcd_write_string("00:00");
 }
 
+>>>>>>> Stashed changes
 
 
 
@@ -239,14 +226,21 @@ void stop () //sw1 is pressed for 2nd time
 	lcd_cmd(first_line2);
 	lcd_write_string("      00:00     ");
 	lcd_cmd(first_line1);
-	lcd_write_string("   Reset timer  ");
+	lcd_write_string("   Timer reset  ");
+	delay_ms(1000);
 	s=0;
 	m=0;
 }
+<<<<<<< Updated upstream
 		
 		
 
+<<<<<<< Updated upstream
 
 
 
+=======
+		
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

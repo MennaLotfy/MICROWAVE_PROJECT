@@ -8,7 +8,7 @@
 #include "functions.h"
 #include "GPIO_INIT.h"
 
-extern m,s;
+extern int m,s;
 
 //take_cooking_time function returns "1" if taking the time is successful,
 //returns "0" if the entered time is invalid *not between 1-30*,
@@ -29,7 +29,7 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(11,2);
 	lcd_write(D1);
-	delay_ms(100);
+	Systick_n10ms(20);
 	if((D1!='I') && (D2=='I') && (D3=='I') && (D4=='I') )  //converting digits from *char* to *int*
 	{
 		text_s[1]= D1;
@@ -47,7 +47,7 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(10,2);
 	lcd_write(D1);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D2);
 
@@ -69,10 +69,10 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(8,2);
 	lcd_write(D1);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(10,2);
 	lcd_write(D2);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D3);
 
@@ -98,16 +98,16 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(7,2);
 	lcd_write(D1);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(8,2);
 	lcd_write(D2);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(10,2);
 	lcd_write(D3);
-	delay_ms(100);
+	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D4);
-	delay_ms(100);
+	Systick_n10ms(20);
 	if((D1!='I') && (D2!='I') && (D3!='I') && (D4!='I'))  //converting digits from *char* to *int*
 	{
 		text_s[1]=D4;
@@ -144,7 +144,7 @@ void Option_D()
 	if(take_cooking_time_return==1)
 	{ 
         lcd_cmd(lcd_Clear);
-        delay_ms(2000);
+        Systick_n10ms(200);
 	      counts_min_sec(m,s);
         food_ready();
 	}
@@ -152,7 +152,7 @@ void Option_D()
 	{
 		lcd_cmd(lcd_Clear);
  	  lcd_write_string("Enter valid time");
-		delay_ms(6000);
+		Systick_n10ms(300);
 		lcd_cmd(lcd_Clear);
 		goto Vaild;
 	}
@@ -162,7 +162,7 @@ void Option_D()
  	  lcd_write_string("Enter numbers");
 		lcd_cmd(first_line2);
 		lcd_write_string("Only");
-		delay_ms(6000);
+		Systick_n10ms(300);
 		lcd_cmd(lcd_Clear);
 		goto Vaild;
 	}

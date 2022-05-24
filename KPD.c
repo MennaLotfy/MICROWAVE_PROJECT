@@ -28,7 +28,7 @@ void Keypad_Init(void)
 	GPIO_PORTA_PCTL_R = 0x00000000;
 }
 
-//Keypad_getkey() function returns the value of key pressed by the user
+//Keypad_getkey() function returns the value of key pressed by the user and returns 'S' if SW1 is pressed
 u8 Keypad_Getkey(void)
 {
 	unsigned long i;

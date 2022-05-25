@@ -166,7 +166,7 @@ uint32_t take_cooking_time(void)
 
 void Option_D()
 {
-	uint32_t take_cooking_time_return,SW;
+	uint32_t take_cooking_time_return;
 	lcd_cmd(lcd_Clear);
 	lcd_cmd(first_line1);
 	Vaild:

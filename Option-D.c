@@ -29,7 +29,7 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(11,2);
 	lcd_write(D1);
-	Systick_n10ms(20);
+	Systick_n10ms(30);
 	if((D1!='I') && (D2=='I') && (D3=='I') && (D4=='I') )  //converting digits from *char* to *int*
 	{
 		text_s[1]= D1;
@@ -47,10 +47,9 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(10,2);
 	lcd_write(D1);
-	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D2);
-
+	Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3=='I') && (D4=='I'))  //converting digits from *char* to *int*
 	{
 			text_s[0]=D1;
@@ -69,13 +68,11 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(8,2);
 	lcd_write(D1);
-	Systick_n10ms(20);
 	lcd_gotoxy(10,2);
 	lcd_write(D2);
-	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D3);
-
+  Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3!='I') && (D4=='I'))  //converting digits from *char* to *int*
 	{
   	  text_s[0]=D2;
@@ -98,16 +95,13 @@ uint32_t take_cooking_time(void)
 	}
 	lcd_gotoxy(7,2);
 	lcd_write(D1);
-	Systick_n10ms(20);
 	lcd_gotoxy(8,2);
 	lcd_write(D2);
-	Systick_n10ms(20);
 	lcd_gotoxy(10,2);
 	lcd_write(D3);
-	Systick_n10ms(20);
 	lcd_gotoxy(11,2);
 	lcd_write(D4);
-	Systick_n10ms(20);
+	Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3!='I') && (D4!='I'))  //converting digits from *char* to *int*
 	{
 		text_s[1]=D4;

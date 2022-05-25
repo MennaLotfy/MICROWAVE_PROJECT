@@ -16,7 +16,8 @@ extern int m,s;
 
 uint32_t take_cooking_time(void)
 {
-	char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keypad
+	m=0,s=0;
+		char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keypad
   char text_s[10] = {'0','0',0};       //temp array to store the digits entered
 	char text_m[10] = {'0','0',0};                           //variables to store the changed values(m and s) from char to integers
 	lcd_gotoxy(7,2);
@@ -154,9 +155,9 @@ void Option_D()
 	{
 		Systick_n10ms(30);
 		lcd_cmd(lcd_Clear);
- 	  lcd_write_string("Enter numbers");
+ 	  lcd_write_string(" Enter numbers ");
 		lcd_cmd(first_line2);
-		lcd_write_string("Only");
+		lcd_write_string("      Only      ");
 		Systick_n10ms(300);
 		lcd_cmd(lcd_Clear);
 		goto Vaild;

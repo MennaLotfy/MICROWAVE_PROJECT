@@ -56,6 +56,18 @@ uint32_t take_cooking_time(void)
 			text_s[0]=D1;
 			text_s[1]=D2;
 			s=atoi(text_s);
+		
+		  if(s==60)
+			{
+				s=0;
+				m=1;
+			}
+			else if(s>60)
+			{
+				s=s-60;
+				m=1;
+			}
+			
 		  if(Keypad_Getkey()=='S')            //time taken, go to cook
 		  {
 				return 1;
@@ -82,6 +94,18 @@ uint32_t take_cooking_time(void)
 		
 	  	text_m[1]=D1;
 	  	m=atoi(text_m);
+	    
+      if(s==60)
+			{
+				s=0;
+				m++;
+			}
+      else if(s>60)
+			{
+				s=s-60;
+				m++;
+			}				
+		
       
       if(Keypad_Getkey()=='S')     //time taken, go to cook
 		  {
@@ -112,10 +136,22 @@ uint32_t take_cooking_time(void)
 		text_m[1]=D2;
 		text_m[0]=D1;
 		m=atoi(text_m);
+		if(s==60)
+		{
+			s=0;
+			m++;
+		}
+		else if(s>60)
+		{
+			s=s-60;
+			m++;
+		}
+		
 		if((m>30)||((m>=30)&&(s>=1)))  //checking if the time entered is valid
 		{
 			return 0;
 		}
+		
 		while(1)
 		{
 			if(Keypad_Getkey()=='S')   //time taken, go to cook

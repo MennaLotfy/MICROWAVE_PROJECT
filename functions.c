@@ -147,7 +147,7 @@ void food_ready(void)
 	lcd_cmd(lcd_Clear);
 	lcd_write_string(" Cooking done ");
 	lcd_cmd(first_line2);
-	lcd_write_string(" Hmmmm! ");
+	lcd_write_string("     Hmmmm!     ");
 	s=0;
 	for(i=0;i<3;i++)
 	{

@@ -16,10 +16,10 @@ extern int m,s;
 
 uint32_t take_cooking_time(void)
 {
-	m=0,s=0;
-		char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keypad
+	char D1='I',D2='I',D3='I',D4='I';    //variables to store numbers entered from keypad
   char text_s[10] = {'0','0',0};       //temp array to store the digits entered
-	char text_m[10] = {'0','0',0};                           //variables to store the changed values(m and s) from char to integers
+	char text_m[10] = {'0','0',0};       //variables to store the changed values(m and s) from char to integers
+	m=0,s=0;
 	lcd_gotoxy(7,2);
 	lcd_write_string("00:00");
 	

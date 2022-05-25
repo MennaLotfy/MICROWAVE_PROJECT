@@ -23,12 +23,12 @@ uint32_t take_cooking_time(void)
 	lcd_write_string("00:00");
 	
 	D1=Keypad_Getkey();                 //taking the first digit from the keypad
+	lcd_gotoxy(11,2);
+	lcd_write(D1);
 	if((D1=='A') || (D1=='B') || (D1=='C') || (D1=='D') || (D1=='#') || (D1=='*'))
 	{
 		return 2;
 	}
-	lcd_gotoxy(11,2);
-	lcd_write(D1);
 	Systick_n10ms(30);
 	if((D1!='I') && (D2=='I') && (D3=='I') && (D4=='I') )  //converting digits from *char* to *int*
 	{
@@ -41,14 +41,14 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D2=Keypad_Getkey();               //taking the second digit from the keypad
-	if((D2=='A') || (D2=='B') || (D2=='C') || (D2=='D') || (D2=='#') || (D2=='*'))
-	{
-		return 2;
-	}
 	lcd_gotoxy(10,2);
 	lcd_write(D1);
 	lcd_gotoxy(11,2);
 	lcd_write(D2);
+	if((D2=='A') || (D2=='B') || (D2=='C') || (D2=='D') || (D2=='#') || (D2=='*'))
+	{
+		return 2;
+	}
 	Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3=='I') && (D4=='I'))  //converting digits from *char* to *int*
 	{
@@ -62,16 +62,16 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D3=Keypad_Getkey();            //taking the third digit from the keypad
-	if((D3=='A') || (D3=='B') || (D3=='C') || (D3=='D') || (D3=='#') || (D3=='*'))
-	{
-		return 2;
-	}
 	lcd_gotoxy(8,2);
 	lcd_write(D1);
 	lcd_gotoxy(10,2);
 	lcd_write(D2);
 	lcd_gotoxy(11,2);
 	lcd_write(D3);
+	if((D3=='A') || (D3=='B') || (D3=='C') || (D3=='D') || (D3=='#') || (D3=='*'))
+	{
+		return 2;
+	}
   Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3!='I') && (D4=='I'))  //converting digits from *char* to *int*
 	{
@@ -89,10 +89,6 @@ uint32_t take_cooking_time(void)
 	}
 	
 	D4=Keypad_Getkey();           //taking the fourth digit from the keypad
-	if((D4=='A') || (D4=='B') || (D4=='C') || (D4=='D') || (D4=='#') || (D4=='*'))
-	{
-		return 2;
-	}
 	lcd_gotoxy(7,2);
 	lcd_write(D1);
 	lcd_gotoxy(8,2);
@@ -101,6 +97,10 @@ uint32_t take_cooking_time(void)
 	lcd_write(D3);
 	lcd_gotoxy(11,2);
 	lcd_write(D4);
+	if((D4=='A') || (D4=='B') || (D4=='C') || (D4=='D') || (D4=='#') || (D4=='*'))
+	{
+		return 2;
+	}
 	Systick_n10ms(30);
 	if((D1!='I') && (D2!='I') && (D3!='I') && (D4!='I'))  //converting digits from *char* to *int*
 	{
@@ -152,6 +152,7 @@ void Option_D()
 	}
 	else if(take_cooking_time_return==2)
 	{
+		Systick_n10ms(30);
 		lcd_cmd(lcd_Clear);
  	  lcd_write_string("Enter numbers");
 		lcd_cmd(first_line2);
